@@ -101,6 +101,6 @@ def loop():
 
 
 if __name__ == '__main__':
-    env_file = os.path.join(os.path.dirname(__file__), '.env')
+    env_file = os.path.join(os.path.dirname(__file__), 'base.env')
     load_env_file(env_file)
     loop()
