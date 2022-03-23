@@ -1,5 +1,4 @@
 import os
-from web3.auto.infura import w3
 from mnemonic import Mnemonic
 from bip32utils import BIP32Key, BIP32_HARDEN
 import blocksmith
@@ -69,6 +68,7 @@ def generate_mnemonic():
     return mnemo.generate(strength=128)
 
 def check_balance(wallet_ac):
+    from web3.auto.infura import w3
     return w3.eth.getBalance(wallet_ac)
 
 def writeto(phrase, eth_addr, eth_balance):
