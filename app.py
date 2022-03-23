@@ -1,14 +1,8 @@
 import os
+from web3.auto.infura import w3
 from mnemonic import Mnemonic
 from bip32utils import BIP32Key, BIP32_HARDEN
 import blocksmith
-import base64
-import web3
-from web3 import Web3
-import random
-import asyncio
-from contextlib import suppress
-from web3 import eth
 
 
 def load_env_file(dotenv_path, override=False):
@@ -71,13 +65,10 @@ def txt2list(fname):
         return [line.strip() for line in f]
 
 def generate_mnemonic():
-    mnemonic_words = []
-    for x in range(12):
-        mnemonic_words.append(random.choice(txt2list('bip39.txt')))
-    return " ".join(mnemonic_words)
+    mnemo = Mnemonic("english")
+    return mnemo.generate(strength=128)
 
 def check_balance(wallet_ac):
-    from web3.auto.infura import w3
     return w3.eth.getBalance(wallet_ac)
 
 def writeto(phrase, eth_addr, eth_balance):
