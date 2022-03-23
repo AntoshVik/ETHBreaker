@@ -3,6 +3,9 @@ from mnemonic import Mnemonic
 from bip32utils import BIP32Key, BIP32_HARDEN
 import blocksmith
 
+# For 12 words use strength 128
+# For 24 words use strength 256
+strength_of_wallet = 128
 
 def load_env_file(dotenv_path, override=False):
     with open(dotenv_path) as file_obj:
@@ -65,7 +68,7 @@ def txt2list(fname):
 
 def generate_mnemonic():
     mnemo = Mnemonic("english")
-    return mnemo.generate(strength=128)
+    return mnemo.generate(strength=strength_of_wallet)
 
 def check_balance(wallet_ac):
     from web3.auto.infura import w3
