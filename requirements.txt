@@ -1,0 +1,5 @@
+mnemonic
+bip32utils
+blocksmith
+web3
+aiogram
